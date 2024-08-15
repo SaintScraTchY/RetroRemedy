@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AA3F7D82-5213-4BF7-8E2B-E03A279853FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetroRemedy.Web", "RetroRemedy.Web\RetroRemedy.Web.csproj", "{CDF8AC7B-A757-424F-920D-7625A4E45548}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{69C98A93-EEF2-44D3-A742-3549B3793416}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetroRemedy.Services", "RetroRemedy.Services\RetroRemedy.Services.csproj", "{4E8EEBBE-890A-479B-81DA-886449DD3B42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetroRemedy.Core", "RetroRemedy.Core\RetroRemedy.Core.csproj", "{78159B25-A763-43E0-8DBC-6C7FC336124C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetroRemedy.Infrastructure", "RetroRemedy.Infrastructure\RetroRemedy.Infrastructure.csproj", "{92DC0106-A732-4638-92B1-EC6EE787D552}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetroRemedy.Tests", "RetroRemedy.Tests\RetroRemedy.Tests.csproj", "{BD29FFB2-B9F2-49EB-BDD3-45D99F5E36AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CDF8AC7B-A757-424F-920D-7625A4E45548}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDF8AC7B-A757-424F-920D-7625A4E45548}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDF8AC7B-A757-424F-920D-7625A4E45548}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDF8AC7B-A757-424F-920D-7625A4E45548}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E8EEBBE-890A-479B-81DA-886449DD3B42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E8EEBBE-890A-479B-81DA-886449DD3B42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E8EEBBE-890A-479B-81DA-886449DD3B42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E8EEBBE-890A-479B-81DA-886449DD3B42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78159B25-A763-43E0-8DBC-6C7FC336124C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78159B25-A763-43E0-8DBC-6C7FC336124C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78159B25-A763-43E0-8DBC-6C7FC336124C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78159B25-A763-43E0-8DBC-6C7FC336124C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92DC0106-A732-4638-92B1-EC6EE787D552}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92DC0106-A732-4638-92B1-EC6EE787D552}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92DC0106-A732-4638-92B1-EC6EE787D552}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92DC0106-A732-4638-92B1-EC6EE787D552}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD29FFB2-B9F2-49EB-BDD3-45D99F5E36AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD29FFB2-B9F2-49EB-BDD3-45D99F5E36AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD29FFB2-B9F2-49EB-BDD3-45D99F5E36AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD29FFB2-B9F2-49EB-BDD3-45D99F5E36AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CDF8AC7B-A757-424F-920D-7625A4E45548} = {AA3F7D82-5213-4BF7-8E2B-E03A279853FC}
+		{4E8EEBBE-890A-479B-81DA-886449DD3B42} = {AA3F7D82-5213-4BF7-8E2B-E03A279853FC}
+		{78159B25-A763-43E0-8DBC-6C7FC336124C} = {AA3F7D82-5213-4BF7-8E2B-E03A279853FC}
+		{92DC0106-A732-4638-92B1-EC6EE787D552} = {AA3F7D82-5213-4BF7-8E2B-E03A279853FC}
+		{BD29FFB2-B9F2-49EB-BDD3-45D99F5E36AF} = {AA3F7D82-5213-4BF7-8E2B-E03A279853FC}
+	EndGlobalSection
+EndGlobal

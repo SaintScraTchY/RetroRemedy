@@ -1,0 +1,6 @@
+﻿services:
+  retroremedy.web:
+    image: retroremedy.web
+    build:
+      context: .
+      dockerfile: RetroRemedy.Web/Dockerfile
