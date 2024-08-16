@@ -1,6 +1,6 @@
 using RetroRemedy.Core.Entities.AppUsers;
 
-namespace RetroRemedy.Core.BaseEntites;
+namespace RetroRemedy.Core.Common;
 
 public class BaseEntity : BasicEntity
 {

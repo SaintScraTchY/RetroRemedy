@@ -5,7 +5,6 @@ namespace RetroRemedy.Core.Entities.AppUsers;
 
 public class AppUser : IdentityUser<long>
 {
-
     public ICollection<IdentityRole> Roles { get; set; }
     public ICollection<Comment> Comments { get; set; }
 }

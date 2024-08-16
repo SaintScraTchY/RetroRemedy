@@ -1,4 +1,4 @@
-namespace RetroRemedy.Core.BaseEntites;
+namespace RetroRemedy.Core.Common;
 
 public class BasicEntity
 {
