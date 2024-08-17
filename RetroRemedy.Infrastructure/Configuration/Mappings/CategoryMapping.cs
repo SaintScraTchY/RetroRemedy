@@ -34,7 +34,7 @@ public class CategoryMapping : IEntityTypeConfiguration<Category>
             .HasMaxLength(96)
             .IsRequired();
 
-        builder.HasMany(x => x.BlogPostCategories)
+        builder.HasMany(x => x.BlogPosts)
             .WithOne(x => x.Category)
             .HasForeignKey(x => x.CategoryId);
         

@@ -1,5 +1,6 @@
 using RetroRemedy.Core.Common;
 using RetroRemedy.Core.Entities.BlogPostCategories;
+using RetroRemedy.Core.Entities.BlogPosts;
 using RetroRemedy.Core.Entities.GameCategories;
 using RetroRemedy.Core.Entities.Ratings;
 
@@ -16,7 +17,7 @@ public class Category : BaseEntity,IRatingRepository
     public long ParentId { get; private set; }
     public Category Parent { get; set; }
     public ICollection<GameCategory> GameCategories { get; set; }
-    public ICollection<BlogPostCategory> BlogPostCategories { get; set; }
+    public ICollection<BlogPost> BlogPosts { get; set; }
 
     protected Category(long userId) : base(userId, true)
     {

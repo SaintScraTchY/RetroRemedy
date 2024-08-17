@@ -8,7 +8,7 @@ public class GameMapping:IEntityTypeConfiguration<Game>
 {
     public void Configure(EntityTypeBuilder<Game> builder)
     {
-        builder.ToTable("Tags");
+        builder.ToTable("Games");
         builder.HasKey(x => x.Id);
         builder.Property(x => x.RowVersion).IsRowVersion();
         

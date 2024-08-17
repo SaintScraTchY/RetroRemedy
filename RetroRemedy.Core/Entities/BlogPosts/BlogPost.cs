@@ -10,24 +10,27 @@ public class BlogPost : BaseEntity
 {
     public string Title { get; set; }
     public string Content { get; set; }
-    public long AuthorIds { get; set; }
+    public long AuthorId { get; set; }
     public AppUser Author { get; set; }
     public long GameId { get; set; }
     public Game Game { get; set; }
     public bool IsPublished { get; set; }
     public DateTime PublishedDateTime { get; set; }
+    public float Rating { get; set; }
     public string Slug { get; set; }
+    public string MetaDescription { get; set; }
+    public string KeyWords { get; set; }
     public string Excerpt { get; set; }
     public long CategoryId { get; set; }
     public Category Category { get; set; }
     public ICollection<BlogPostTag> BlogPostTags { get; set; }
 
-    protected BlogPost(string title, string content, long authorIds, long gameId, string slug, 
+    protected BlogPost(string title, string content, long authorId, long gameId, string slug, 
         string excerpt, long categoryId, long userId) : base(userId, true)
     {
         Title = title;
         Content = content;
-        AuthorIds = authorIds;
+        AuthorId = authorId;
         GameId = gameId;
         Slug = slug;
         Excerpt = excerpt;
