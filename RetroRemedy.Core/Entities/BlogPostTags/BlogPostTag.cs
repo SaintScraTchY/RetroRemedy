@@ -11,6 +11,11 @@ public class BlogPostTag : BasicEntity
     public long TagId { get; private set; }
     public Tag Tag { get; private set; }
 
+    protected BlogPostTag()
+    {
+        
+    }
+
     public BlogPostTag(long blogPostId, long tagId)
     {
         BlogPostId = blogPostId;

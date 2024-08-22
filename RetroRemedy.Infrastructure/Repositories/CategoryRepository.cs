@@ -4,8 +4,8 @@ using RetroRemedy.Infrastructure.Common;
 
 namespace RetroRemedy.Infrastructure.Repositories;
 
-public class CategoryRepository(DbContext dbContext):BaseRepository<Category>(dbContext),ICategoryRepository
+public class CategoryRepository(RetroContext dbContext):BaseRepository<Category>(dbContext),ICategoryRepository
 {
-    private readonly DbContext _context = dbContext;
+    private readonly RetroContext _context = dbContext;
 
 }

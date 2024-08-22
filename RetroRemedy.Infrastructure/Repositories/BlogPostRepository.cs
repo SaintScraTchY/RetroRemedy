@@ -4,8 +4,8 @@ using RetroRemedy.Infrastructure.Common;
 
 namespace RetroRemedy.Infrastructure.Repositories;
 
-public class BlogPostRepository(DbContext dbContext):BaseRepository<BlogPost>(dbContext),IBlogPostRepository
+public class BlogPostRepository(RetroContext dbContext):BaseRepository<BlogPost>(dbContext),IBlogPostRepository
 {
-    private readonly DbContext _context = dbContext;
+    private readonly RetroContext _context = dbContext;
 
 }

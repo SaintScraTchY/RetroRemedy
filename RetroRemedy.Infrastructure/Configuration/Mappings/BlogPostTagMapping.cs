@@ -8,7 +8,7 @@ public class BlogPostTagMapping : IEntityTypeConfiguration<BlogPostTag>
 {
     public void Configure(EntityTypeBuilder<BlogPostTag> builder)
     {
-        builder.ToTable("BlogPosts");
+        builder.ToTable("BlogPostTags");
         builder.HasKey(x => x.Id);
                 
         builder.Property(x => x.CreateDateTime)

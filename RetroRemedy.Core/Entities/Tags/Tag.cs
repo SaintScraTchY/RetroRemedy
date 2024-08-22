@@ -10,7 +10,11 @@ public class Tag : BaseEntity
     public ICollection<GameTag> GameTags { get; set; }
     public ICollection<BlogPostTag> BlogPostTags { get; set; }
 
-    protected Tag(string name, long userId) : base(userId, true)
+    protected Tag()
+    {
+        
+    }
+    public Tag(string name, long userId) : base(userId, true)
     {
         Name = name;
     }

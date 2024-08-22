@@ -12,6 +12,10 @@ public class GameCategory : BasicEntity
     public long CategoryId { get; private set; }
     public Category Category { get; private set; }
 
+    protected GameCategory()
+    {
+        
+    }
     public GameCategory(long gameId, long categoryId)
     {
         GameId = gameId;

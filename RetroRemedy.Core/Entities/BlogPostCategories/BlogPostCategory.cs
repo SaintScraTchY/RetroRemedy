@@ -12,6 +12,10 @@ public class BlogPostCategory : BasicEntity
     public long CategoryId { get; set; }
     public Category Category { get; set; }
 
+    protected BlogPostCategory()
+    {
+        
+    }
     public BlogPostCategory(long blogPostId, long categoryId)
     {
         BlogPostId = blogPostId;

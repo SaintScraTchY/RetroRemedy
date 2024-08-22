@@ -8,7 +8,7 @@ public class GameTagMapping:IEntityTypeConfiguration<GameTag>
 {
     public void Configure(EntityTypeBuilder<GameTag> builder)
     {
-        builder.ToTable("BlogPosts");
+        builder.ToTable("GameTags");
         builder.HasKey(x => x.Id);
                 
         builder.Property(x => x.CreateDateTime)

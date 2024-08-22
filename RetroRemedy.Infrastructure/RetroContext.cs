@@ -25,13 +25,13 @@ public class RetroContext : IdentityDbContext<AppUser,IdentityRole<long>,long>
 
     public DbSet<Publisher> Publishers { get; set; }
     public DbSet<Tag> Tags { get; set; }
-    public DbSet<Category> Categories { get; set; }
+    //public DbSet<Category> Categories { get; set; }
     public DbSet<Game> Games { get; set; }
     public DbSet<GameTag> GameTags { get; set; }
-    public DbSet<GameCategory> GameCategories { get; set; }
+    //public DbSet<GameCategory> GameCategories { get; set; }
 
-    public DbSet<UploadMedia> UploadMedias { get; set; }
-    public DbSet<Comment> Comments { get; set; }
+    public DbSet<UploadFile> UploadMedias { get; set; }
+    //public DbSet<Comment> Comments { get; set; }
     public DbSet<BlogPost> BlogPosts { get; set; }
     public DbSet<BlogPostTag> BlogPostTags { get; set; }
     

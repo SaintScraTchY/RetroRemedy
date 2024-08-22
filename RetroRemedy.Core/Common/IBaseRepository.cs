@@ -1,4 +1,5 @@
 using System.Linq.Expressions;
+using RetroRemedy.Common.Contracts;
 
 namespace RetroRemedy.Core.Common;
 

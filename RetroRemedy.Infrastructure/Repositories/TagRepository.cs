@@ -4,7 +4,7 @@ using RetroRemedy.Infrastructure.Common;
 
 namespace RetroRemedy.Infrastructure.Repositories;
 
-public class TagRepository(DbContext dbContext) : BaseRepository<Tag>(dbContext) ,ITagRepository
+public class TagRepository(RetroContext dbContext) : BaseRepository<Tag>(dbContext) ,ITagRepository
 {
-    private readonly DbContext _context = dbContext;
+    private readonly RetroContext _context = dbContext;
 }

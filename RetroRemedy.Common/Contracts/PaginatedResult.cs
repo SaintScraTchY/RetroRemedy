@@ -1,4 +1,4 @@
-namespace RetroRemedy.Core.Common;
+namespace RetroRemedy.Common.Contracts;
 
 public class PaginatedResult<TEntity>(int pageIndex, int pageSize, long totalCount, IEnumerable<TEntity> data)
 {

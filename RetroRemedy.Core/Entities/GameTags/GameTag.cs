@@ -6,11 +6,21 @@ namespace RetroRemedy.Core.Entities.GameTags;
 
 public class GameTag : BasicEntity
 {
-    public long GameId { get; set; }
-    public Game Game { get; set; }
-    public long TagId { get; set; }
-    public Tag Tag { get; set; }
+    public long GameId { get; private set; }
+    public Game Game { get; private set; }
+    public long TagId { get; private set; }
+    public Tag Tag { get; private set; }
 
+    protected GameTag()
+    {
+        
+    }
+    public GameTag(Game game, long tagId)
+    {
+        Game = game;
+        TagId = tagId;
+    }
+    
     public GameTag(long gameId, long tagId)
     {
         GameId = gameId;

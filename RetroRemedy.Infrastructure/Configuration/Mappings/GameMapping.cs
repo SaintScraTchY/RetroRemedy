@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using RetroRemedy.Core.Entities.Games;
+using RetroRemedy.Core.Entities.UploadMedias;
 
 namespace RetroRemedy.Infrastructure.Configuration.Mappings;
 
@@ -34,7 +35,7 @@ public class GameMapping:IEntityTypeConfiguration<Game>
             .HasMaxLength(256)
             .IsRequired();
 
-        builder.Property(x => x.Rating)
+        builder.Property(x => x.ThumbnailId)
             .IsRequired();
 
         builder.HasMany(x => x.GameTags)
@@ -44,13 +45,21 @@ public class GameMapping:IEntityTypeConfiguration<Game>
         builder.HasMany(x => x.BlogPosts)
             .WithOne(x => x.Game)
             .HasForeignKey(x => x.GameId);
+        
+        builder.HasOne(x => x.Thumbnail)
+            .WithOne()
+            .HasForeignKey<Game>(x=>x.ThumbnailId)
+            .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasMany(x => x.Medias)
             .WithOne(x => x.Game)
-            .HasForeignKey(x => x.GameId);
+            .HasForeignKey(x => x.GameId)
+            .OnDelete(DeleteBehavior.Cascade);
+        
         
         builder.HasOne(x => x.Publisher)
             .WithMany(x => x.Games)
             .HasForeignKey(x => x.PublisherId);
+
     }
 }

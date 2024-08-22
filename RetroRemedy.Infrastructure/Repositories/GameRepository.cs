@@ -4,7 +4,7 @@ using RetroRemedy.Infrastructure.Common;
 
 namespace RetroRemedy.Infrastructure.Repositories;
 
-public class GameRepository(DbContext context) : BaseRepository<Game>(context), IGameRepository
+public class GameRepository(RetroContext context) : BaseRepository<Game>(context), IGameRepository
 {
-    private readonly DbContext _context = context;
+    private readonly RetroContext _context = context;
 }

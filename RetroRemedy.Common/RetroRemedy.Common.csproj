@@ -8,9 +8,11 @@
 
     <ItemGroup>
       <Folder Include="MapperProfiles\" />
-      <Folder Include="Contracts\" />
-      <Folder Include="Helpers\" />
       <Folder Include="LangResources\" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
     </ItemGroup>
 
     <ItemGroup>

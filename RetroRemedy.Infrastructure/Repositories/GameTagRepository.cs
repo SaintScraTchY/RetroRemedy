@@ -4,8 +4,8 @@ using RetroRemedy.Infrastructure.Common;
 
 namespace RetroRemedy.Infrastructure.Repositories;
 
-public class GameTagRepository(DbContext dbContext):BaseRepository<GameTag>(dbContext),IGameTagRepository
+public class GameTagRepository(RetroContext dbContext):BaseRepository<GameTag>(dbContext),IGameTagRepository
 {
-    private readonly DbContext _context = dbContext;
+    private readonly RetroContext _context = dbContext;
 
 }

@@ -16,7 +16,12 @@ public class Comment : BaseEntity
     public bool IsBlogPostAuthor { get; set; }
     public bool IsAdmin { get; set; }
 
-    protected Comment(string content, long authorId, long blogPostId, long? parentCommentId,
+    protected Comment()
+    {
+        
+    }
+    
+    public Comment(string content, long authorId, long blogPostId, long? parentCommentId,
         bool isBlogPostAuthor, bool isAdmin, long userId, bool isActive = false) 
         : base(userId,(isAdmin || isBlogPostAuthor))
     {

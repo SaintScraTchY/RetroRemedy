@@ -1,5 +1,6 @@
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
+using RetroRemedy.Common.Contracts;
 using RetroRemedy.Core.Common;
 
 namespace RetroRemedy.Infrastructure.Common;
