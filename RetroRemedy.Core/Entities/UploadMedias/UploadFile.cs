@@ -15,8 +15,6 @@ public class UploadFile : BasicEntity
     public string FilePath { get; private set; }
     public ushort Order { get; set; } = 0;
 
-    public Publisher Publisher { get; set; }
-    public long PublisherId { get; set; }
     public Game Game { get; set; }
     public long? GameId { get; set; }
     

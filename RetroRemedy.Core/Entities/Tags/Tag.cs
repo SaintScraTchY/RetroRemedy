@@ -18,4 +18,10 @@ public class Tag : BaseEntity
     {
         Name = name;
     }
+    
+    public void Update(string name, long userId)
+    {
+        base.UpdateTimestamp(userId);
+        Name = name;
+    }
 }

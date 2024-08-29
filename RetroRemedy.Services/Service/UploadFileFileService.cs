@@ -124,12 +124,28 @@ public class UploadFileService(
         return Error.Failure();
     }
 
-    public async Task<ErrorOr<UploadFile>> SaveAndCreateUploadFile(UploadFileModel uploadModel)
+    public async Task<ErrorOr<UploadFile>> SaveAndCreateUploadFile(UploadFileModel uploadModel, long entityId = 0,
+        UploadType type = UploadType.None)
     {
         var saveFileResult = await SaveFileLocal(uploadModel);
         if (saveFileResult.IsError)
         {
             return saveFileResult.Errors;
+        }
+
+        //TODO refactor This
+        switch (type)
+        {
+            case UploadType.Game:
+                saveFileResult.Value.GameId = entityId;
+                break;
+            case UploadType.BlogPost:
+                saveFileResult.Value.BlogPostId = entityId;
+                break;
+            case UploadType.None:
+                break;
+            default:
+                break;
         }
 
         var entity = await _uploadFileRepository.CreateAsync(saveFileResult.Value);
@@ -141,12 +157,32 @@ public class UploadFileService(
         return Error.Failure();
     }
 
-    public async Task<ErrorOr<Success>> SaveAndCreateUploadFiles(IEnumerable<UploadFileModel> uploadModels)
+    public async Task<ErrorOr<Success>> SaveAndCreateUploadFiles(IEnumerable<UploadFileModel> uploadModels,long entityId,UploadType type)
     {
         var saveFileResults = await SaveFilesLocal(uploadModels);
         if (saveFileResults.IsError)
         {
             return saveFileResults.Errors;
+        }
+        
+        //TODO refactor This
+        switch (type)
+        {
+            case UploadType.Game:
+                foreach (var uploadFile in saveFileResults.Value)
+                {
+                    uploadFile.GameId = entityId;
+                }
+                break;
+            case UploadType.BlogPost:
+                foreach (var uploadFile in saveFileResults.Value)
+                {
+                    uploadFile.BlogPostId = entityId;
+                }
+                break;
+            case UploadType.None:
+            default:
+                break;
         }
 
         await _uploadFileRepository.CreateManyAsync(saveFileResults.Value);
@@ -158,6 +194,25 @@ public class UploadFileService(
         return Error.Failure();
     }
 
+    public void RemoveFileLocal(string filePath)
+    {
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+        }
+    }
+
+    public void RemoveFilesLocal(IEnumerable<string> filePaths)
+    {
+        foreach (var path in filePaths)
+        {
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+        }
+    }
+
     public async Task<ErrorOr<Success>> RemoveFile(long id)
     {
         var existingFile = await _uploadFileRepository.GetByIdAsync(id);
@@ -167,12 +222,11 @@ public class UploadFileService(
         }
 
         // Delete the file from the local file system
-        if (File.Exists(existingFile.FilePath))
-        {
-            File.Delete(existingFile.FilePath);
-        }
+        RemoveFileLocal(existingFile.FilePath);
+        
+        existingFile.Remove();
 
-        _uploadFileRepository.DeleteAsync(existingFile);
+        _uploadFileRepository.UpdateAsync(existingFile);
         if (await _uploadFileRepository.SaveChangesAsync())
         {
             return Result.Success;
@@ -196,7 +250,7 @@ public class UploadFileService(
     }
 
     // Helper method to generate unique file names
-    private string GenerateUniqueFileName(string fileName)
+    private static string GenerateUniqueFileName(string fileName)
     {
         return $"{Guid.NewGuid()}_{Path.GetFileName(fileName)}";
     }

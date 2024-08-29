@@ -71,8 +71,5 @@ public class BlogPostMapping : IEntityTypeConfiguration<BlogPost>
             .WithOne(x => x.BlogPost)
             .HasForeignKey(x => x.BlogPostId);
 
-        builder.HasMany(x => x.Medias)
-            .WithOne(x => x.BlogPost)
-            .HasForeignKey(x => x.BlogPostId);
     }
 }

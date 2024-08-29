@@ -1,9 +1,12 @@
 using System.Collections;
+using AutoMapper;
 using ErrorOr;
 using RetroRemedy.Common.Contracts;
 using RetroRemedy.Common.Contracts.GameContracts;
 using RetroRemedy.Common.Helpers;
+using RetroRemedy.Core.Common;
 using RetroRemedy.Core.Entities.Games;
+using RetroRemedy.Core.Enums;
 using RetroRemedy.Services.IService;
 
 namespace RetroRemedy.Services.Service;
@@ -11,6 +14,7 @@ namespace RetroRemedy.Services.Service;
 public class GameService(IValidatorService validatorService, IGameRepository gameRepository, IUploadFileService fileService)
     : IGameService
 {
+    private readonly IMapper _mapper;
     private readonly IGameRepository _gameRepository = gameRepository;
     private readonly IUploadFileService _fileService = fileService;
 
@@ -58,7 +62,7 @@ public class GameService(IValidatorService validatorService, IGameRepository gam
 
         if (model.Files.Any(x => x.IsAdded))
         {
-            var result = fileService.SaveAndCreateUploadFiles(model.Files.Where(x => x.IsAdded).ToList());
+            var result = fileService.SaveAndCreateUploadFiles(model.Files.Where(x => x.IsAdded).ToList(),game.Id,UploadType.Game);
         }
 
         if (model.Files.Any(x=>x.IsDeleted))
@@ -73,7 +77,7 @@ public class GameService(IValidatorService validatorService, IGameRepository gam
         long? thumbnailId = null;
         if (model.ThumbnailFile != null)
         {
-            var fileResult = await _fileService.SaveAndCreateUploadFile(model.ThumbnailFile);
+            var fileResult = await _fileService.SaveAndCreateUploadFile(model.ThumbnailFile,game.Id,UploadType.Game);
                 
             if (fileResult.IsError)
                 return fileResult.Errors;
@@ -106,14 +110,15 @@ public class GameService(IValidatorService validatorService, IGameRepository gam
         return Error.Failure();
     }
 
-    public Task<ErrorOr<GameDetailViewModel>> GetGameDetailBy(long Id)
+    public async Task<ErrorOr<UpdateGameModel>> GetGameDetailBy(long Id)
     {
-        throw new NotImplementedException();
+        return _mapper.Map<UpdateGameModel>(  await _gameRepository.GetByIdAsync(Id));
     }
 
-    public Task<ErrorOr<PaginatedResult<GameViewModel>>> GetGameAdminListBy(SearchGameModel searchModel)
+    public async Task<ErrorOr<PaginatedResult<GameViewModel>>> GetGameAdminListBy(SearchGameModel searchModel)
     {
-        throw new NotImplementedException();
+        return new PaginatedResult<GameViewModel>(1, 50, 50,
+            _mapper.Map<IEnumerable<GameViewModel>>(await _gameRepository.GetAllAsync()));
     }
 
     public Task<ErrorOr<PaginatedResult<GameQueryViewModel>>> GetGameListBy(SearchGameModel searchModel)

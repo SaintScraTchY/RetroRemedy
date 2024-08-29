@@ -33,6 +33,18 @@ public class CategoryMapping : IEntityTypeConfiguration<Category>
         builder.Property(x => x.Name)
             .HasMaxLength(96)
             .IsRequired();
+        
+        builder.Property(x => x.Slug)
+            .IsRequired();
+        
+        builder.Property(x => x.MetaDescription)
+            .IsRequired();
+        
+        builder.Property(x => x.KeyWords)
+            .IsRequired();
+        
+        builder.Property(x => x.IconId)
+            .IsRequired();
 
         builder.HasMany(x => x.BlogPosts)
             .WithOne(x => x.Category)

@@ -41,6 +41,6 @@ public class PublisherMapping : IEntityTypeConfiguration<Publisher>
         builder.Property(x => x.KeyWords)
             .HasMaxLength(128).IsRequired();
 
-        builder.HasOne(x => x.Thumbnail).WithOne(x => x.Publisher).HasForeignKey<Publisher>(x => x.ThumbnailId);
+        builder.HasOne(x => x.Thumbnail).WithOne().HasForeignKey<Publisher>(x => x.ThumbnailId);
     }
 }

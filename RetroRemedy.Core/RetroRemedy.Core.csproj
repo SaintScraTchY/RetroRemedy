@@ -15,8 +15,4 @@
       <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="8.0.8" />
     </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\RetroRemedy.Common\RetroRemedy.Common.csproj" />
-    </ItemGroup>
-
 </Project>

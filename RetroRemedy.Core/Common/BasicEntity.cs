@@ -11,4 +11,8 @@ public class BasicEntity
         CreateDateTime = DateTime.UtcNow;
         IsRemoved = false;
     }
+    public void Remove()
+    {
+        IsRemoved = true;
+    }
 }

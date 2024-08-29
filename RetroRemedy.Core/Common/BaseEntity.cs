@@ -18,7 +18,7 @@ public class BaseEntity : BasicEntity
         CreatedById = userId;
     }
     
-    private protected void UpdateTimestamp(long userId)
+    protected void UpdateTimestamp(long userId)
     {
         UpdateDateTime = DateTime.UtcNow;
         UpdatedById = userId;

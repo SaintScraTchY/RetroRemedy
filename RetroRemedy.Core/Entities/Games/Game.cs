@@ -40,6 +40,7 @@ namespace RetroRemedy.Core.Entities.Games;
             if(medias != null && medias.Count != 0)
                 Medias = medias;
         }
+        
         public void Update(string? title, string? description, DateOnly? releaseDate,
             long? publisherId,long? thumbnailId,long userId)
         {

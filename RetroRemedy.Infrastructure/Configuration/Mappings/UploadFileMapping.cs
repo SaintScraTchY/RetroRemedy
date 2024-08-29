@@ -19,9 +19,6 @@ public class UploadFileMapping : IEntityTypeConfiguration<UploadFile>
         builder.Property(x => x.WebUrl).IsRequired();
         builder.Property(x => x.Order).HasDefaultValue(0).IsRequired();
 
-        builder.HasOne(x => x.Publisher).WithOne(x => x.Thumbnail).HasForeignKey<UploadFile>(x => x.PublisherId);
-
-
         builder.HasOne(x => x.Game)
             .WithMany(x => x.Medias)
             .HasForeignKey(x => x.GameId)
