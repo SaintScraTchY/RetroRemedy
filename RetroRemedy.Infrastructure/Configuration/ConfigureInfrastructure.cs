@@ -21,7 +21,18 @@ public static class ConfigureInfrastructure
     public static void ConfigureDatabase(this WebApplicationBuilder builder)
     {
         builder.Services.AddDbContext<RetroContext>(options =>
-            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+        {
+            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"), optionsBuilder =>
+            {
+                optionsBuilder.EnableRetryOnFailure(3);
+                optionsBuilder.CommandTimeout(3000);
+            });
+
+            options.EnableSensitiveDataLogging(false);
+            options.EnableDetailedErrors(false);
+            options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+        });
+
     }
     
     public static void ConfigureIdentity(this WebApplicationBuilder builder)

@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using RetroRemedy.Infrastructure;
 using RetroRemedy.Infrastructure.Configuration;
+using RetroRemedy.Services.Configuration;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,14 +13,23 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 builder.Services.AddDbContext<RetroContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"), optionsBuilder =>
+    {
+        optionsBuilder.EnableRetryOnFailure(3);
+        optionsBuilder.CommandTimeout(3000);
+    });
+
+    options.EnableSensitiveDataLogging(false);
+    options.EnableDetailedErrors(false);
+    options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+});
 
 //builder.ConfigureDatabase();
 builder.ConfigureIdentity();
 builder.AddRepositories();
 builder.AddServices();
-builder.InjectLibraries();
-builder.ConfigureWebConfigs();
+//builder.ConfigureWebConfigs();
 
 var app = builder.Build();
 
@@ -27,6 +38,7 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+app.MapScalarApiReference();
 
 app.UseHttpsRedirection();
 

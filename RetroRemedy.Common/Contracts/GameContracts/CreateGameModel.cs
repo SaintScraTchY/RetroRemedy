@@ -7,6 +7,6 @@ public class CreateGameModel
     public DateOnly ReleaseDate { get; set; }
     public long PublisherId { get; private set; }
     public UploadFileModel ThumbnailFile { get; set; }
-    public IEnumerable<long> tagIds { get; set; }
+    public IEnumerable<long> TagIds { get; set; }
     public IEnumerable<UploadFileModel> Files { get; set; }
 }

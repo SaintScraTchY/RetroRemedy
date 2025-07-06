@@ -1,7 +1,7 @@
-using AutoMapper;
 using ErrorOr;
 using RetroRemedy.Common.Contracts.GameContracts;
 using RetroRemedy.Common.Helpers;
+using RetroRemedy.Common.MapperProfiles;
 using RetroRemedy.Core.Common;
 using RetroRemedy.Core.Entities.GameCategories;
 using RetroRemedy.Core.Enums;
@@ -9,7 +9,7 @@ using RetroRemedy.Services.IService;
 
 namespace RetroRemedy.Services.Service;
 
-public class GameService(IValidatorService validatorService, IGameRepository gameRepository, IUploadFileService fileService)
+public class GameService(IValidatorService validatorService, IGameRepository gameRepository, IUploadFileService fileService,IEntityMapper _mapper)
     : IGameService
 {
     public async Task<ErrorOr<Created>> CreateGame(CreateGameModel model,long userId)
@@ -32,7 +32,7 @@ public class GameService(IValidatorService validatorService, IGameRepository gam
             return fileResult.Errors;
 
         var game = new Game(model.Title, model.Description, model.ReleaseDate
-            , model.PublisherId, fileResult.Value, model.tagIds, listFilesResult.Value, userId);
+            , model.PublisherId, fileResult.Value, model.TagIds, listFilesResult.Value, userId);
 
         await gameRepository.CreateAsync(game);
 
@@ -106,13 +106,13 @@ public class GameService(IValidatorService validatorService, IGameRepository gam
 
     public async Task<ErrorOr<UpdateGameModel>> GetGameDetailBy(long id)
     {
-        return mapper.Map<UpdateGameModel>(  await gameRepository.GetByIdAsync(id));
+        return _mapper.MapUpdateGameModel(await gameRepository.GetByIdAsync(id));
     }
 
     public async Task<ErrorOr<PaginatedResult<GameViewModel>>> GetGameAdminListBy(SearchGameModel searchModel)
     {
         return new PaginatedResult<GameViewModel>(1, 50, 50,
-            mapper.Map<IEnumerable<GameViewModel>>(await gameRepository.GetAllAsync()));
+            _mapper.MapGameViewModels(await gameRepository.GetAllAsync()));
     }
 
     public Task<ErrorOr<PaginatedResult<GameQueryViewModel>>> GetGameListBy(SearchGameModel searchModel)

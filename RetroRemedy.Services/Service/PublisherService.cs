@@ -1,9 +1,7 @@
-using AutoMapper;
 using ErrorOr;
 using RetroRemedy.Common.Contracts.PublisherContracts;
 using RetroRemedy.Core.Common;
 using RetroRemedy.Core.Entities.GameCategories;
-using RetroRemedy.Core.Enums;
 using RetroRemedy.Services.IService;
 
 namespace RetroRemedy.Services.Service;

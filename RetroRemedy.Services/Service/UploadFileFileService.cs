@@ -31,7 +31,7 @@ public class UploadFileService(
             // Save the file to the local file system
             await using (var fileStream = new FileStream(filePath, FileMode.Create))
             {
-                await uploadFile.File.OpenReadStream(maxFileSize).CopyToAsync(fileStream);
+                await uploadFile.File.OpenReadStream().CopyToAsync(fileStream);
             }
 
             // Create UploadFile entity without saving to the database

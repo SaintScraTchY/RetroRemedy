@@ -1,5 +1,0 @@
-{
-  "ConnectionStrings": {
-    "DefaultConnection": "Host=localhost;Port=5433;Database=RetroDB;Username=postgres;Password=8612"
-  }
-}

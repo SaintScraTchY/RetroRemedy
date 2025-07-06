@@ -1,6 +1,6 @@
-using AutoMapper;
 using ErrorOr;
 using RetroRemedy.Common.Contracts.TagContracts;
+using RetroRemedy.Common.MapperProfiles;
 using RetroRemedy.Core.Common;
 using RetroRemedy.Core.Entities.LabelEntities;
 using RetroRemedy.Services.IService;
@@ -10,9 +10,9 @@ namespace RetroRemedy.Services.Service;
 public class TagService : ITagService
 {
     private readonly ITagRepository _tagRepository;
-    private readonly IMapper _mapper;
+    private readonly IEntityMapper _mapper;
 
-    public TagService(ITagRepository tagRepository, IMapper mapper)
+    public TagService(ITagRepository tagRepository, IEntityMapper mapper)
     {
         _tagRepository = tagRepository;
         _mapper = mapper;
@@ -68,14 +68,13 @@ public class TagService : ITagService
 
     public async Task<ErrorOr<UpdateTagModel>> GetTagDetailBy(long Id)
     {
-        var tag = await _tagRepository.GetByIdAsync(Id);
-        return _mapper.Map<UpdateTagModel>(tag);
+        return _mapper.MapUpdateTagModel(await _tagRepository.GetByIdAsync(Id));
     }
 
     public async Task<ErrorOr<PaginatedResult<TagViewModel>>> GetTagAdminListBy(SearchTagModel searchModel)
     {
         var tags = await _tagRepository.GetAllAsync();
-        return new PaginatedResult<TagViewModel>(1, 50, 50, _mapper.Map<IEnumerable<TagViewModel>>(tags));
+        return new PaginatedResult<TagViewModel>(1, 50, 50, _mapper.MapTagViewModels(tags));
     }
 
     public Task<ErrorOr<IEnumerable<TagQueryViewModel>>> GetTagListBy()
