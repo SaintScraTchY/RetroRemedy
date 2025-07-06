@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Identity;
-using RetroRemedy.Core.Entities.BlogPosts;
-using RetroRemedy.Core.Entities.Comments;
+using RetroRemedy.Core.Entities.BlogEntities;
 
 namespace RetroRemedy.Core.Entities.AppUsers;
 

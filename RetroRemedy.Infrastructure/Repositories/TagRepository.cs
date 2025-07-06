@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using RetroRemedy.Core.Entities.Tags;
+using RetroRemedy.Core.Entities.LabelEntities;
 using RetroRemedy.Infrastructure.Common;
 
 namespace RetroRemedy.Infrastructure.Repositories;

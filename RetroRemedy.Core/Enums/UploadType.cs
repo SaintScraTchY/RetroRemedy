@@ -1,5 +1,3 @@
-using RetroRemedy.Core.Entities.Publishers;
-
 namespace RetroRemedy.Core.Enums;
 
 public enum UploadType

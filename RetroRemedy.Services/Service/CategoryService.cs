@@ -1,13 +1,12 @@
-using AutoMapper;
 using ErrorOr;
 using RetroRemedy.Common.Contracts.CategoryContracts;
 using RetroRemedy.Core.Common;
-using RetroRemedy.Core.Entities.Categories;
+using RetroRemedy.Core.Entities.LabelEntities;
 using RetroRemedy.Services.IService;
 
 namespace RetroRemedy.Services.Service;
 
-public class CategoryService(ICategoryRepository categoryRepository, IMapper mapper, IUploadFileService fileService)
+public class CategoryService(ICategoryRepository categoryRepository, IUploadFileService fileService)
     : ICategoryService
 {
     // private readonly ICategoryRepository _categoryRepository = categoryRepository;
@@ -29,7 +28,7 @@ public class CategoryService(ICategoryRepository categoryRepository, IMapper map
         }
 
         Category category = new Category(model.Name, model.Description, model.Slug, model.MetaDescription,
-            model.KeyWords, model.ParentCategoryId, userId, uploadFile.Value, true);
+            model.KeyWords, model.ParentCategoryId, uploadFile.Value);
 
         await categoryRepository.CreateAsync(category);
         if (await categoryRepository.SaveChangesAsync())
@@ -63,7 +62,7 @@ public class CategoryService(ICategoryRepository categoryRepository, IMapper map
             category.ChangeIcon(uploadFile.Value.Id);
         }
         category.Update(model.Name, model.Description, model.Slug, model.MetaDescription,
-            model.KeyWords, model.ParentCategoryId, userId);
+            model.KeyWords, model.ParentCategoryId);
 
         await categoryRepository.CreateAsync(category);
         if (await categoryRepository.SaveChangesAsync())
@@ -82,7 +81,7 @@ public class CategoryService(ICategoryRepository categoryRepository, IMapper map
     {
         Category category = await categoryRepository.GetByIdAsync(Id);
         
-        category.Remove(userId);
+        category.Remove();
         if (await categoryRepository.SaveChangesAsync())
         {
             return Result.Deleted;

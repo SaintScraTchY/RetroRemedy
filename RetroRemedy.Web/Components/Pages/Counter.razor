@@ -10,11 +10,13 @@
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
 @code {
-    private int currentCount = 0;
+    private float currentCount = 0;
+
+    [Parameter] public float incrementValue { get; set; } = 0.1f;
 
     private void IncrementCount()
     {
-        currentCount++;
+        currentCount+=incrementValue;
     }
 
 }

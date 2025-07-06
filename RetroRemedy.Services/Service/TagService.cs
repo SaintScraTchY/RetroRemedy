@@ -2,7 +2,7 @@ using AutoMapper;
 using ErrorOr;
 using RetroRemedy.Common.Contracts.TagContracts;
 using RetroRemedy.Core.Common;
-using RetroRemedy.Core.Entities.Tags;
+using RetroRemedy.Core.Entities.LabelEntities;
 using RetroRemedy.Services.IService;
 
 namespace RetroRemedy.Services.Service;

@@ -2,15 +2,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using RetroRemedy.Core.Entities.AppUsers;
-using RetroRemedy.Core.Entities.BlogPosts;
-using RetroRemedy.Core.Entities.BlogPostTags;
-using RetroRemedy.Core.Entities.Categories;
-using RetroRemedy.Core.Entities.Comments;
+using RetroRemedy.Core.Entities.BlogEntities;
 using RetroRemedy.Core.Entities.GameCategories;
-using RetroRemedy.Core.Entities.Games;
-using RetroRemedy.Core.Entities.GameTags;
-using RetroRemedy.Core.Entities.Publishers;
-using RetroRemedy.Core.Entities.Tags;
+using RetroRemedy.Core.Entities.LabelEntities;
 using RetroRemedy.Core.Entities.UploadMedias;
 using RetroRemedy.Infrastructure.Configuration.Mappings;
 
@@ -28,12 +22,15 @@ public class RetroContext : IdentityDbContext<AppUser,IdentityRole<long>,long>
     public DbSet<Category> Categories { get; set; }
     public DbSet<Game> Games { get; set; }
     public DbSet<GameTag> GameTags { get; set; }
-    //public DbSet<GameCategory> GameCategories { get; set; }
+    public DbSet<GameCategory> GameCategories { get; set; }
 
     public DbSet<UploadFile> UploadMedias { get; set; }
-    //public DbSet<Comment> Comments { get; set; }
+    
     public DbSet<BlogPost> BlogPosts { get; set; }
     public DbSet<BlogPostTag> BlogPostTags { get; set; }
+    public DbSet<BlogPostContent> BlogPostContents { get; set; }
+    public DbSet<BlogPostCategory> BlogPostCategories { get; set; }
+    public DbSet<PostComment> Comments { get; set; }
     
     //TODO Add Others Later On
 

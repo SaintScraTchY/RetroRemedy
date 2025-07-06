@@ -4,3 +4,9 @@
     build:
       context: .
       dockerfile: RetroRemedy.Web/Dockerfile
+  retroremedy.api:
+    image: retroremedy.api
+    build:
+      context: .
+      dockerfile: RetroRemedy.Api/Dockerfile
+

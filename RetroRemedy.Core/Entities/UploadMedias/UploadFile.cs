@@ -1,7 +1,6 @@
 using RetroRemedy.Core.Common;
-using RetroRemedy.Core.Entities.BlogPosts;
-using RetroRemedy.Core.Entities.Games;
-using RetroRemedy.Core.Entities.Publishers;
+using RetroRemedy.Core.Entities.BlogEntities;
+using RetroRemedy.Core.Entities.GameCategories;
 using RetroRemedy.Core.Enums;
 
 namespace RetroRemedy.Core.Entities.UploadMedias;

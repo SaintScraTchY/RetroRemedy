@@ -13,10 +13,4 @@ public static class ConfigureService
         builder.Services.AddScoped<IGameService, GameService>();
         builder.Services.AddScoped<IValidatorService, ValidatorService>();
     }
-
-    public static void InjectLibraries(this WebApplicationBuilder builder)
-    {
-        builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-    }
-    
 }

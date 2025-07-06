@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using RetroRemedy.Core.Entities.Games;
 using RetroRemedy.Core.Entities.UploadMedias;
 
 namespace RetroRemedy.Infrastructure.Configuration.Mappings;

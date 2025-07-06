@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using RetroRemedy.Core.Entities.Tags;
+using RetroRemedy.Core.Entities.LabelEntities;
 
 namespace RetroRemedy.Infrastructure.Configuration.Mappings;
 

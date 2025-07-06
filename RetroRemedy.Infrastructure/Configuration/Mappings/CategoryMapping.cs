@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using RetroRemedy.Core.Entities.Categories;
+using RetroRemedy.Core.Entities.LabelEntities;
 
 namespace RetroRemedy.Infrastructure.Configuration.Mappings;
 
@@ -10,23 +10,10 @@ public class CategoryMapping : IEntityTypeConfiguration<Category>
     {
         builder.ToTable("Categories");
         builder.HasKey(x => x.Id);
-        builder.Ignore(x => x.RowVersion);
 
         builder.Property(x => x.CreateDateTime)
             .IsRequired();
         
-        builder.Property(x => x.CreatedById)
-            .IsRequired();
-
-        builder.Property(x => x.UpdateDateTime)
-            .IsRequired(false);
-        
-        builder.Property(x => x.UpdatedById)
-            .IsRequired(false);
-
-        builder.Property(x => x.IsActive)
-            .IsRequired();
-
         builder.Property(x => x.IsRemoved)
             .IsRequired();
 

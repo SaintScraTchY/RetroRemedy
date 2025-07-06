@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using RetroRemedy.Core.Entities.BlogPosts;
+using RetroRemedy.Core.Entities.BlogEntities;
 
 namespace RetroRemedy.Infrastructure.Configuration.Mappings;
 
@@ -41,8 +41,6 @@ public class BlogPostMapping : IEntityTypeConfiguration<BlogPost>
             .HasMaxLength(256)
             .IsRequired();
 
-        builder.Property(x => x.Content).IsRequired();
-
         builder.Property(x => x.Slug)
             .HasMaxLength(160)
             .IsRequired();
@@ -68,6 +66,10 @@ public class BlogPostMapping : IEntityTypeConfiguration<BlogPost>
             .HasForeignKey(x => x.CategoryId);
 
         builder.HasMany(x => x.BlogPostTags)
+            .WithOne(x => x.BlogPost)
+            .HasForeignKey(x => x.BlogPostId);
+        
+        builder.HasMany(x => x.PostContents)
             .WithOne(x => x.BlogPost)
             .HasForeignKey(x => x.BlogPostId);
 

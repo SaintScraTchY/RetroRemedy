@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using RetroRemedy.Core.Entities.Games;
+using RetroRemedy.Core.Entities.GameCategories;
 using RetroRemedy.Infrastructure.Common;
 
 namespace RetroRemedy.Infrastructure.Repositories;

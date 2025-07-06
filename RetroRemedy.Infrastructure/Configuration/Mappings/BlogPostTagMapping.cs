@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using RetroRemedy.Core.Entities.BlogPostTags;
+using RetroRemedy.Core.Entities.BlogEntities;
 
 namespace RetroRemedy.Infrastructure.Configuration.Mappings;
 

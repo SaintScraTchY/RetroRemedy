@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using RetroRemedy.Core.Entities.BlogPostTags;
+using RetroRemedy.Core.Entities.BlogEntities;
 using RetroRemedy.Infrastructure.Common;
 
 namespace RetroRemedy.Infrastructure.Repositories;

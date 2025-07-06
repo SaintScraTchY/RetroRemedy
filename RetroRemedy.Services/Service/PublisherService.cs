@@ -2,8 +2,7 @@ using AutoMapper;
 using ErrorOr;
 using RetroRemedy.Common.Contracts.PublisherContracts;
 using RetroRemedy.Core.Common;
-using RetroRemedy.Core.Entities.Publishers;
-using RetroRemedy.Core.Entities.Tags;
+using RetroRemedy.Core.Entities.GameCategories;
 using RetroRemedy.Core.Enums;
 using RetroRemedy.Services.IService;
 
@@ -13,12 +12,10 @@ public class PublisherService : IPublisherService
 {
     private readonly IPublisherRepository _publisherRepository;
     private readonly IUploadFileService _fileService;
-    private readonly IMapper _mapper;
 
-    public PublisherService(IPublisherRepository publisherRepository, IMapper mapper)
+    public PublisherService(IPublisherRepository publisherRepository)
     {
         _publisherRepository = publisherRepository;
-        _mapper = mapper;
     }
 
     public async Task<ErrorOr<Created>> CreatePublisher(CreatePublisherModel model, long userId)
