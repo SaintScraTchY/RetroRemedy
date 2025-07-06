@@ -1,4 +1,5 @@
 using RetroRemedy.Common.Contracts.GameContracts;
+using RetroRemedy.Common.Contracts.PublisherContracts;
 using RetroRemedy.Common.Contracts.TagContracts;
 using RetroRemedy.Core.Entities.GameCategories;
 using RetroRemedy.Core.Entities.LabelEntities;
@@ -13,4 +14,5 @@ public partial class EntityMapper : IEntityMapper
     public partial IList<GameViewModel> MapGameViewModels(IEnumerable<Game> games);
     public partial UpdateTagModel MapUpdateTagModel(Tag tag);
     public partial IEnumerable<TagViewModel> MapTagViewModels(IEnumerable<Tag> tags);
+    public partial IEnumerable<PublisherViewModel> MapPublisherViewModels(IEnumerable<Publisher> publishers);
 }

@@ -12,7 +12,7 @@ namespace RetroRemedy.Api.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 [Produces(MediaTypeNames.Application.Json)]
-public class GameController : ControllerBase
+public class GameController : ApiControllerBase
 {
     private readonly IGameService _gameService;
 

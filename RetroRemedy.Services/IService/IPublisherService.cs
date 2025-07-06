@@ -11,4 +11,5 @@ public interface IPublisherService
     Task<ErrorOr<Deleted>> RemovePublisherBy(long Id,long userId);
     Task<ErrorOr<UpdatePublisherModel>> GetPublisherDetailBy(long Id);
     Task<ErrorOr<PaginatedResult<PublisherViewModel>>> GetPublisherAdminListBy();
+    Task<ErrorOr<IEnumerable<PublisherViewModel>>> GetAllPublishers();
 }

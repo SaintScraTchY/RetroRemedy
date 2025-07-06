@@ -12,7 +12,7 @@ namespace RetroRemedy.Api.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 [Produces(MediaTypeNames.Application.Json)]
-public class CategoryController : ControllerBase
+public class CategoryController : ApiControllerBase
 {
     private readonly ICategoryService _categoryService;
 

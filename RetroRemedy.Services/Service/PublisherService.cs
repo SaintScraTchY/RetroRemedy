@@ -1,5 +1,6 @@
 using ErrorOr;
 using RetroRemedy.Common.Contracts.PublisherContracts;
+using RetroRemedy.Common.MapperProfiles;
 using RetroRemedy.Core.Common;
 using RetroRemedy.Core.Entities.GameCategories;
 using RetroRemedy.Services.IService;
@@ -10,9 +11,12 @@ public class PublisherService : IPublisherService
 {
     private readonly IPublisherRepository _publisherRepository;
     private readonly IUploadFileService _fileService;
+    private readonly IEntityMapper _mapper;
 
-    public PublisherService(IPublisherRepository publisherRepository)
+    public PublisherService(IPublisherRepository publisherRepository,IEntityMapper mapper, IUploadFileService fileService)
     {
+        _fileService = fileService;
+        _mapper = mapper;
         _publisherRepository = publisherRepository;
     }
 
@@ -72,7 +76,7 @@ public class PublisherService : IPublisherService
         {
             if (oldThumbnailId != publisher.ThumbnailId)
             {
-                _fileService.RemoveFile(oldThumbnailId);
+                await _fileService.RemoveFile(oldThumbnailId);
             }
             return Result.Updated;
         }
@@ -102,5 +106,11 @@ public class PublisherService : IPublisherService
     public Task<ErrorOr<PaginatedResult<PublisherViewModel>>> GetPublisherAdminListBy()
     {
         throw new NotImplementedException();
+    }
+
+    public async Task<ErrorOr<IEnumerable<PublisherViewModel>>> GetAllPublishers()
+    {
+        throw new NotImplementedException();
+        //return _mapper.MapPublisherViewModels(await _publisherRepository.GetManyAsyncBy(q => !q.IsRemoved));
     }
 }
